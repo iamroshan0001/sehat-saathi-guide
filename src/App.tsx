@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { CartProvider } from '@/contexts/CartContext';
 import { AuthProvider } from '@/contexts/AuthContext';
-import { ThemeProvider } from '@/contexts/ThemeContext';
+
 import LoadingScreen from '@/components/LoadingScreen';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -107,7 +107,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-      <ThemeProvider>
         <LanguageProvider>
           <AuthProvider>
             <CartProvider>
@@ -116,9 +115,8 @@ const App = () => {
                 <Sonner />
                 <BrowserRouter>
                   <ScrollToTopOnRouteChange />
-                  <div className="min-h-screen bg-background">
                   <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-                    <Navbar />
+                    <Navbar/>
                     <Routes>
                       <Route path="/" element={<Index />} />
                       <Route path="/symptoms" element={<SymptomTracker />} />
